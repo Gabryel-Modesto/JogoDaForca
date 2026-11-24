@@ -1,19 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo Da Forca</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Jogo da Forca</h1>
+      <h1>Jogo da Forca</h1>
     </header>
 
-    <main></main>
+    <main>
+      <section>
+        <div id="desenho"></div>
+
+        <div id="palavraSecreta"></div>
+
+        <div id="statusJogo">
+          <p id="contadorErros">Erros: 0 / 6</p>
+          <p id="contadorAcertos">Acertos: 0</p>
+        </div>
+
+        <div id="tecladoVirtual"></div>
+      </section>
+
+      <section>
+        <button id="btnComoJogar">Como jogar?</button>
+
+        <dialog id="modalInstruções">
+          <div>
+            <h2>Como jogar?</h2>
+
+            <p>
+              O objetivo é descobrir a palavra secreta relacionada á tecnologia
+              antes de completar o desenho da forca.
+            </p>
+
+            <h3>Regras</h3>
+            <ul>
+              <li>Escolha uma letra pelo teclado físico ou virtual</li>
+              <li>Se acertar, a letra aparecerá na palavra</li>
+              <li>Se errar, uma parte do desenho será adicionada</li>
+              <li>Você pode cometer até 6 erros</li>
+              <li>
+                Descubra a palavra antes de completar a forca para vencer!
+              </li>
+            </ul>
+
+            <button id="btnFecharInstrucoes">Entendi!</button>
+          </div>
+        </dialog>
+      </section>
+    </main>
 
     <footer></footer>
-</body>
+  </body>
 </html>
