@@ -1,3 +1,4 @@
+
 :root {
   --cor-primaria: #2563eb;
   --cor-secundaria: #64748b;
@@ -14,39 +15,48 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 header {
   background-color: var(--cor-branca);
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   text-align: center;
 }
 
 header h1 {
   color: var(--cor-primaria);
-  font-size: 32px;
+  font-size: clamp(24px, 4vw, 32px);
   font-weight: 700;
 }
 
 main {
   width: 100%;
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: clamp(16px, 4vw, 40px) auto;
+  padding: clamp(12px, 3vw, 20px);
   flex: 1;
 }
 
 main section {
   background-color: var(--cor-branca);
-  padding: 30px;
+  padding: clamp(16px, 4vw, 30px);
   border-radius: 12px;
+  width: 100%;
 }
 
 button {
@@ -59,6 +69,7 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  touch-action: manipulation;
 }
 
 button:hover {
@@ -70,23 +81,54 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .acoesIniciais {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
 #areaJogo {
   margin-top: 30px;
   text-align: center;
+  width: 100%;
 }
-
-/* Desenho da forca */
 
 #desenho {
   width: 100%;
   min-height: 220px;
   margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#forca {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 220px;
+}
+
+#forca > line:not(.parte-forca) {
+  stroke: var(--cor-texto);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.parte-forca {
+  stroke: var(--cor-erro);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+  visibility: hidden;
 }
 
 #palavraSecreta {
@@ -94,15 +136,17 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: clamp(5px, 2vw, 12px);
   margin: 30px 0;
-  font-size: 28px;
+  font-size: clamp(18px, 4vw, 28px);
   font-weight: 700;
   letter-spacing: 2px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 #palavraSecreta span {
-  min-width: 30px;
+  min-width: clamp(20px, 5vw, 30px);
   padding: 5px;
   border-bottom: 3px solid var(--cor-primaria);
 }
@@ -111,7 +155,8 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 15px 30px;
   margin: 25px 0;
   font-weight: 600;
 }
@@ -126,15 +171,18 @@ button:focus-visible {
 
 #tecladoVirtual {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
+  width: 100%;
   max-width: 650px;
   margin: 25px auto;
 }
 
 #tecladoVirtual button {
-  padding: 12px 5px;
+  width: 100%;
   min-width: 0;
+  min-height: 44px;
+  padding: 10px 5px;
 }
 
 #tecladoVirtual button:disabled {
@@ -144,18 +192,18 @@ button:focus-visible {
 }
 
 #tecladoVirtual button.letra-correta {
-  background-color: #16a34a;
+  background-color: var(--cor-sucesso);
   color: white;
 }
 
 #tecladoVirtual button.letra-errada {
-  background-color: #dc2626;
+  background-color: var(--cor-erro);
   color: white;
 }
 
 #btnDica {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border-radius: 50%;
   font-size: 22px;
@@ -165,12 +213,16 @@ button:focus-visible {
   margin: 15px auto;
   color: var(--cor-secundaria);
   font-weight: 600;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 dialog {
-  width: 90%;
-  max-width: 500px;
-  padding: 30px;
+  width: min(90%, 500px);
+  max-height: 85vh;
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding: clamp(20px, 4vw, 30px);
   margin: auto;
   border: none;
   border-radius: 14px;
@@ -209,26 +261,6 @@ dialog button {
   margin-top: 15px;
 }
 
-#forca {
-  width: 100%;
-  max-width: 300px;
-  height: 220px;
-}
-
-#forca > line:not(.parte-forca) {
-  stroke: var(--cor-texto);
-  stroke-width: 4;
-  stroke-linecap: round;
-}
-
-.parte-forca {
-  stroke: var(--cor-erro);
-  stroke-width: 4;
-  stroke-linecap: round;
-  fill: none;
-  visibility: hidden;
-}
-
 footer {
   background-color: var(--cor-branca);
   padding: 20px;
@@ -241,38 +273,39 @@ footer p {
   margin: 5px 0;
 }
 
-@media (max-width: 600px) {
-  header {
-    padding: 20px;
-  }
-
-  header h1 {
-    font-size: 26px;
-  }
-
-  main {
-    margin: 20px auto;
-    padding: 12px;
-  }
-
+/* Celulares pequenos */
+@media (max-width: 380px) {
   main section {
-    padding: 20px 15px;
+    padding: 15px 10px;
   }
 
-  .acoesIniciais {
-    flex-wrap: wrap;
+  #tecladoVirtual {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
   }
 
-  #statusJogo {
-    gap: 15px;
-    flex-wrap: wrap;
+  #tecladoVirtual button {
+    padding: 9px 2px;
+    font-size: 13px;
+    min-height: 40px;
   }
 
   #palavraSecreta {
-    gap: 7px;
-    font-size: 22px;
+    letter-spacing: 1px;
   }
 
+  #statusJogo {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .acoesIniciais button {
+    width: 100%;
+  }
+}
+
+/* Celulares */
+@media (min-width: 381px) and (max-width: 600px) {
   #tecladoVirtual {
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 6px;
@@ -282,8 +315,51 @@ footer p {
     padding: 10px 3px;
     font-size: 14px;
   }
+}
 
-  dialog {
-    padding: 22px;
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  main {
+    max-width: 760px;
+  }
+
+  #tecladoVirtual {
+    max-width: 600px;
   }
 }
+
+/* Monitores maiores */
+@media (min-width: 1200px) {
+  main {
+    max-width: 1000px;
+  }
+}
+
+/* Telas com pouca altura */
+@media (max-height: 500px) {
+  header {
+    padding: 10px;
+  }
+
+  main {
+    margin: 10px auto;
+  }
+
+  #desenho {
+    min-height: 150px;
+    margin: 10px auto;
+  }
+
+  #forca {
+    max-height: 150px;
+  }
+
+  #palavraSecreta {
+    margin: 15px 0;
+  }
+
+  #statusJogo {
+    margin: 15px 0;
+  }
+}
+
