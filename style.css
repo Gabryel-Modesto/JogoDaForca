@@ -144,13 +144,13 @@ button:focus-visible {
 }
 
 #tecladoVirtual button.letra-correta {
-    background-color: #16a34a;
-    color: white;
+  background-color: #16a34a;
+  color: white;
 }
 
 #tecladoVirtual button.letra-errada {
-    background-color: #dc2626;
-    color: white;
+  background-color: #dc2626;
+  color: white;
 }
 
 #btnDica {
@@ -207,6 +207,26 @@ dialog li {
 
 dialog button {
   margin-top: 15px;
+}
+
+#forca {
+  width: 100%;
+  max-width: 300px;
+  height: 220px;
+}
+
+#forca > line:not(.parte-forca) {
+  stroke: var(--cor-texto);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.parte-forca {
+  stroke: var(--cor-erro);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+  visibility: hidden;
 }
 
 footer {

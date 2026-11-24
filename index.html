@@ -54,7 +54,58 @@
 
         <!-- Área principal do jogo -->
         <div id="areaJogo" hidden>
-          <div id="desenho"></div>
+          <div id="desenho">
+            <svg id="forca" viewBox="0 0 300 220">
+              <!-- Estrutura da forca -->
+              <line x1="40" y1="200" x2="180" y2="200" />
+              <line x1="80" y1="200" x2="80" y2="30" />
+              <line x1="80" y1="30" x2="190" y2="30" />
+              <line x1="190" y1="30" x2="190" y2="55" />
+
+              <!-- Partes do boneco -->
+              <circle id="cabeca" class="parte-forca" cx="190" cy="75" r="20" />
+              <line
+                id="corpo"
+                class="parte-forca"
+                x1="190"
+                y1="95"
+                x2="190"
+                y2="145"
+              />
+              <line
+                id="braco-esquerdo"
+                class="parte-forca"
+                x1="190"
+                y1="110"
+                x2="165"
+                y2="130"
+              />
+              <line
+                id="braco-direito"
+                class="parte-forca"
+                x1="190"
+                y1="110"
+                x2="215"
+                y2="130"
+              />
+              <line
+                id="perna-esquerda"
+                class="parte-forca"
+                x1="190"
+                y1="145"
+                x2="165"
+                y2="175"
+              />
+              <line
+                id="perna-direita"
+                class="parte-forca"
+                x1="190"
+                y1="145"
+                x2="215"
+                y2="175"
+              />
+            </svg>
+          </div>
 
           <div id="palavraSecreta"></div>
 

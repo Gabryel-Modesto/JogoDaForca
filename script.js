@@ -12,6 +12,15 @@ const btnJogarNovamente = document.querySelector("#btnJogarNovamente");
 const btnDica = document.querySelector("#btnDica");
 const textoDica = document.querySelector("#textoDica");
 
+const partesForca = [
+  document.querySelector("#cabeca"),
+  document.querySelector("#corpo"),
+  document.querySelector("#braco-esquerdo"),
+  document.querySelector("#braco-direito"),
+  document.querySelector("#perna-esquerda"),
+  document.querySelector("#perna-direita"),
+];
+
 const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 const estadoJogo = {
@@ -116,6 +125,7 @@ function verificarLetra(letra, botao) {
 
   atualizarPalavra();
   atualizarStatus();
+  atualizarDesenho();
   verificarResultado();
 
   console.log(estadoJogo);
@@ -177,6 +187,7 @@ function reiniciarJogo() {
   atualizarPalavra();
   criarTeclado();
   atualizarStatus();
+  atualizarDesenho();
 }
 
 function mostrarDica() {
@@ -191,11 +202,22 @@ function mostrarDica() {
   btnDica.disabled = true;
 }
 
+function atualizarDesenho() {
+  partesForca.forEach((parte, indice) => {
+    if (indice < estadoJogo.erros) {
+      parte.style.visibility = "visible";
+    } else {
+      parte.style.visibility = "hidden";
+    }
+  });
+}
+
 btnIniciar.addEventListener("click", () => {
   sortearPalavra();
   atualizarPalavra();
   criarTeclado();
   atualizarStatus();
+  atualizarDesenho();
 
   areaJogo.hidden = false;
   inicioJogo.hidden = true;
