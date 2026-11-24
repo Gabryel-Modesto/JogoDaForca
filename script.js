@@ -5,6 +5,9 @@ const palavraSecreta = document.querySelector("#palavraSecreta");
 const tecladoVirtual = document.querySelector("#tecladoVirtual");
 const contadorErros = document.querySelector("#contadorErros");
 const contadorAcertos = document.querySelector("#contadorAcertos");
+const modalResultado = document.querySelector("#modalResultado");
+const mensagemResultado = document.querySelector("#mensagemResultado");
+const palavraRevelada = document.querySelector("#palavraRevelada");
 
 const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -76,14 +79,14 @@ function criarTeclado() {
     botao.textContent = letra;
 
     botao.addEventListener("click", () => {
-      verificarLetra(letra);
+      verificarLetra(letra, botao);
     });
 
     tecladoVirtual.appendChild(botao);
   }
 }
 
-function verificarLetra(letra) {
+function verificarLetra(letra, botao) {
   if (estadoJogo.finalizado) {
     return;
   }
@@ -95,15 +98,21 @@ function verificarLetra(letra) {
     return;
   }
 
+  //Desabilitando o botão clicado
+  botao.disabled = true;
+
   if (estadoJogo.palavraAtual.includes(letra)) {
     estadoJogo.letrasCorretas.push(letra);
+    botao.classList.add("letra-correta");
   } else {
     estadoJogo.letrasErradas.push(letra);
     estadoJogo.erros++;
+    botao.classList.add("letra-errada");
   }
 
   atualizarPalavra();
   atualizarStatus();
+  verificarResultado();
 
   console.log(estadoJogo);
 }
@@ -112,6 +121,38 @@ function atualizarStatus() {
   contadorErros.textContent = `${estadoJogo.erros} / ${estadoJogo.maxErros}`;
 
   contadorAcertos.textContent = estadoJogo.letrasCorretas.length;
+}
+
+function verificarResultado() {
+  const venceu = [...estadoJogo.palavraAtual].every((letra) =>
+    estadoJogo.letrasCorretas.includes(letra),
+  );
+
+  if (venceu) {
+    estadoJogo.finalizado = true;
+    estadoJogo.vitoria = true;
+    finalizarJogo();
+
+    console.log("Você Venceu!");
+  } else if (estadoJogo.erros >= estadoJogo.maxErros) {
+    estadoJogo.finalizado = true;
+    estadoJogo.vitoria = false;
+    finalizarJogo();
+
+    console.log("Você perdeu!");
+  }
+}
+
+function finalizarJogo() {
+  if (estadoJogo.vitoria) {
+    mensagemResultado.textContent = "Parabéns, você venceu!!";
+  } else {
+    mensagemResultado.textContent = "Perdeu, Melhore!";
+  }
+
+  palavraRevelada.textContent = `A palavra era: ${estadoJogo.palavraAtual}`;
+
+  modalResultado.showModal();
 }
 
 btnIniciar.addEventListener("click", () => {
