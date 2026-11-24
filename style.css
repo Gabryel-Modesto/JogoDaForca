@@ -1,165 +1,211 @@
 :root {
-    --cor-primaria: #2563eb;
-    --cor-secundaria: #64748b;
-    --cor-fundo: #f1f5f9;
-    --cor-branca: #ffffff;
-    --cor-texto: #1e293b;
-    --cor-sucesso: #16a34a;
-    --cor-erro: #dc2626;
+  --cor-primaria: #2563eb;
+  --cor-secundaria: #64748b;
+  --cor-fundo: #f1f5f9;
+  --cor-branca: #ffffff;
+  --cor-texto: #1e293b;
+  --cor-sucesso: #16a34a;
+  --cor-erro: #dc2626;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
 }
 
 header {
-    background-color: var(--cor-branca);
-    padding: 24px;
-    text-align: center;
+  background-color: var(--cor-branca);
+  padding: 24px;
+  text-align: center;
 }
 
 header h1 {
-    color: var(--cor-primaria);
-    font-size: 32px;
-    font-weight: 700;
+  color: var(--cor-primaria);
+  font-size: 32px;
+  font-weight: 700;
 }
 
 main {
-    width: 100%;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
 main section {
-    background-color: var(--cor-branca);
-    padding: 30px;
-    border-radius: 12px;
+  background-color: var(--cor-branca);
+  padding: 30px;
+  border-radius: 12px;
 }
 
 button {
-    background-color: var(--cor-primaria);
-    color: var(--cor-branca);
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #1d4ed8;
+  background-color: #1d4ed8;
 }
 
 button:focus-visible {
-    outline: 3px solid #93c5fd;
-    outline-offset: 3px;
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
 }
 
 .acoesIniciais {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-footer {
-    background-color: var(--cor-branca);
-    padding: 20px;
-    text-align: center;
-    color: var(--cor-secundaria);
-    font-size: 14px;
-}
-
-footer p {
-    margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 #areaJogo {
-    margin-top: 30px;
-    text-align: center;
+  margin-top: 30px;
+  text-align: center;
 }
 
+/* Desenho da forca */
+
 #desenho {
-    width: 100%;
-    min-width: 220px;
-    margin: 20px auto;
+  width: 100%;
+  min-height: 220px;
+  margin: 20px auto;
 }
 
 #palavraSecreta {
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 30px 0;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 30px 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 #palavraSecreta span {
-    min-width: 30px;
-    padding: 5px;
-    border-bottom: 3px solid var(--cor-primaria);
+  min-width: 30px;
+  padding: 5px;
+  border-bottom: 3px solid var(--cor-primaria);
 }
 
 #statusJogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 25px 0;
-    font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 25px 0;
+  font-weight: 600;
 }
 
 #contadorErros {
-    color: var(--cor-erro);
+  color: var(--cor-erro);
 }
 
 #contadorAcertos {
-    color: var(--cor-sucesso)
+  color: var(--cor-sucesso);
 }
 
 #tecladoVirtual {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(42pc 1fr));
-    gap: 8px;
-    max-width: 650px;
-    margin: 25px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+  gap: 8px;
+  max-width: 650px;
+  margin: 25px auto;
 }
 
 #tecladoVirtual button {
-    padding: 12px 5px;
-    min-width: 0;
+  padding: 12px 5px;
+  min-width: 0;
 }
 
-#tecladoBirtual button:disabled {
-    background-color: #cbd5e1;
-    color: #64748b;
-    cursor: not-allowed;
+#tecladoVirtual button:disabled {
+  background-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
 }
 
 #btnDica {
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border-radius: 50%;
-    font-size: 22px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
 }
 
 #textoDica {
-    margin: 15px auto;
-    color: var(--cor-secundaria);
-    font-weight: 600;
+  margin: 15px auto;
+  color: var(--cor-secundaria);
+  font-weight: 600;
 }
+
+dialog {
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  margin: auto;
+  border: none;
+  border-radius: 14px;
+  background-color: var(--cor-branca);
+  color: var(--cor-texto);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+dialog::backdrop {
+  background-color: rgba(15, 23, 42, 0.6);
+}
+
+dialog h2 {
+  color: var(--cor-primaria);
+  margin-bottom: 18px;
+}
+
+dialog h3 {
+  margin: 20px 0 10px;
+}
+
+dialog p {
+  line-height: 1.6;
+}
+
+dialog ul {
+  padding-left: 22px;
+  margin: 15px 0 25px;
+}
+
+dialog li {
+  margin-bottom: 10px;
+}
+
+dialog button {
+  margin-top: 15px;
+}
+
+
+footer {
+  background-color: var(--cor-branca);
+  padding: 20px;
+  text-align: center;
+  color: var(--cor-secundaria);
+  font-size: 14px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
