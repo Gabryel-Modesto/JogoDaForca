@@ -59,6 +59,66 @@ const palavras = [
     palavra: "DOCKER",
     dica: "Ferramenta utilizada para trabalhar com contêineres.",
   },
+  {
+    palavra: "REACT",
+    dica: "Biblioteca JavaScript utilizada para criar interfaces.",
+  },
+  {
+    palavra: "NODEJS",
+    dica: "Ambiente de execução que permite utilizar JavaScript no servidor.",
+  },
+  {
+    palavra: "MYSQL",
+    dica: "Sistema de gerenciamento de banco de dados relacional.",
+  },
+  {
+    palavra: "POSTGRES",
+    dica: "Banco de dados relacional de código aberto.",
+  },
+  {
+    palavra: "HTML",
+    dica: "Linguagem de marcação utilizada para estruturar páginas web.",
+  },
+  {
+    palavra: "CSS",
+    dica: "Tecnologia utilizada para estilizar páginas web.",
+  },
+  {
+    palavra: "TYPESCRIPT",
+    dica: "Superset de JavaScript que adiciona tipagem estática.",
+  },
+  {
+    palavra: "ANGULAR",
+    dica: "Framework utilizado para desenvolver aplicações web.",
+  },
+  {
+    palavra: "VUE",
+    dica: "Framework JavaScript utilizado para construir interfaces.",
+  },
+  {
+    palavra: "LINUX",
+    dica: "Sistema operacional conhecido por sua natureza de código aberto.",
+  },
+  {
+    palavra: "KERNEL",
+    dica: "Parte central responsável pelo funcionamento de um sistema operacional.",
+  },
+  {
+    palavra: "FIREWALL",
+    dica: "Mecanismo de segurança que controla o tráfego de uma rede.",
+  },
+  {
+    palavra: "GIT",
+    dica: "Sistema de controle de versão utilizado por desenvolvedores.",
+  },
+  {
+    palavra: "API",
+    dica: "Interface que permite a comunicação entre diferentes sistemas.",
+  },
+  {
+    palavra: "JSON",
+    dica: "Formato leve utilizado para armazenar e transmitir dados.",
+  },
 ];
 
 function sortearPalavra() {
@@ -130,8 +190,6 @@ function verificarLetra(letra, botao) {
   atualizarStatus();
   atualizarDesenho();
   verificarResultado();
-
-  console.log(estadoJogo);
 }
 
 function atualizarStatus() {
@@ -155,8 +213,6 @@ function verificarResultado() {
     estadoJogo.finalizado = true;
     estadoJogo.vitoria = false;
     finalizarJogo();
-
-    console.log("Você perdeu!");
   }
 }
 
@@ -216,22 +272,20 @@ function atualizarDesenho() {
 }
 
 document.addEventListener("keydown", (evento) => {
-    const letra = evento.key.toUpperCase();
-    const botoes = tecladoVirtual.querySelectorAll("button");
+  const letra = evento.key.toUpperCase();
+  const botoes = tecladoVirtual.querySelectorAll("button");
 
-    if(!alfabeto.includes(letra)) {
-        return;
-    }
+  if (!alfabeto.includes(letra)) {
+    return;
+  }
 
-    if(areaJogo.hidden || estadoJogo.finalizado) {
-        return;
-    }
+  if (areaJogo.hidden || estadoJogo.finalizado) {
+    return;
+  }
 
-    const botao = [...botoes].find(
-        (botao) => botao.textContent === letra
-    );
+  const botao = [...botoes].find((botao) => botao.textContent === letra);
 
-    verificarLetra(letra, botao);
+  verificarLetra(letra, botao);
 });
 
 btnIniciar.addEventListener("click", () => {
@@ -243,20 +297,15 @@ btnIniciar.addEventListener("click", () => {
 
   areaJogo.hidden = false;
   inicioJogo.hidden = true;
-
-  console.log(estadoJogo);
 });
 
 btnJogarNovamente.addEventListener("click", reiniciarJogo);
 btnDica.addEventListener("click", mostrarDica);
 
 btnComoJogar.addEventListener("click", () => {
-    modalInstrucoes.showModal();
+  modalInstrucoes.showModal();
 });
 
 btnFecharInstrucoes.addEventListener("click", () => {
-    modalInstrucoes.close();
+  modalInstrucoes.close();
 });
-
-
-
