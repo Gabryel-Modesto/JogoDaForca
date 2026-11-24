@@ -1,3 +1,7 @@
+const btnIniciar = document.querySelector("#btnIniciar");
+const areaJogo = document.querySelector("#areaJogo");
+const inicioJogo = document.querySelector("#inicioJogo");
+
 const estadoJogo = {
     palavraAtual: "",
     dicaAtual: "",
@@ -40,3 +44,12 @@ function sortearPalavra() {
     estadoJogo.palavraAtual = palavraSorteada.palavra;
     estadoJogo.dicaAtual = palavraSorteada.dica;
 }
+
+btnIniciar.addEventListener("click", () => {
+    sortearPalavra();
+    
+    areaJogo.hidden = false;
+    inicioJogo.hidden = true;
+
+    console.log(estadoJogo);
+});
