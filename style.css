@@ -130,3 +130,36 @@ footer p {
 #contadorAcertos {
     color: var(--cor-sucesso)
 }
+
+#tecladoVirtual {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(42pc 1fr));
+    gap: 8px;
+    max-width: 650px;
+    margin: 25px auto;
+}
+
+#tecladoVirtual button {
+    padding: 12px 5px;
+    min-width: 0;
+}
+
+#tecladoBirtual button:disabled {
+    background-color: #cbd5e1;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+#btnDica {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+#textoDica {
+    margin: 15px auto;
+    color: var(--cor-secundaria);
+    font-weight: 600;
+}
