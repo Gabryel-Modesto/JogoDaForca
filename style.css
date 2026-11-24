@@ -1,0 +1,22 @@
+:root {
+    --cor-primaria: #2563eb;
+    --cor-fundo: #f1f5f9;
+    --cor-branca: #ffffff;
+    --cor-texto: #1e293b;
+    --cor-sucesso: #16a34a;
+    --cor-erro: #dc2626;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+}
+
