@@ -1,5 +1,6 @@
 :root {
     --cor-primaria: #2563eb;
+    --cor-secundaria: #64748b;
     --cor-fundo: #f1f5f9;
     --cor-branca: #ffffff;
     --cor-texto: #1e293b;
@@ -43,4 +44,43 @@ main section {
     background-color: var(--cor-branca);
     padding: 30px;
     border-radius: 12px;
+}
+
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+.acoesIniciais {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+footer {
+    background-color: var(--cor-branca);
+    padding: 20px;
+    text-align: center;
+    color: var(--cor-secundaria);
+    font-size: 14px;
+}
+
+footer p {
+    margin: 5px 0;
 }
