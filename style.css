@@ -84,3 +84,49 @@ footer {
 footer p {
     margin: 5px 0;
 }
+
+#areaJogo {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#desenho {
+    width: 100%;
+    min-width: 220px;
+    margin: 20px auto;
+}
+
+#palavraSecreta {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#palavraSecreta span {
+    min-width: 30px;
+    padding: 5px;
+    border-bottom: 3px solid var(--cor-primaria);
+}
+
+#statusJogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 25px 0;
+    font-weight: 600;
+}
+
+#contadorErros {
+    color: var(--cor-erro);
+}
+
+#contadorAcertos {
+    color: var(--cor-sucesso)
+}
