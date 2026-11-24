@@ -8,7 +8,9 @@ const contadorAcertos = document.querySelector("#contadorAcertos");
 const modalResultado = document.querySelector("#modalResultado");
 const mensagemResultado = document.querySelector("#mensagemResultado");
 const palavraRevelada = document.querySelector("#palavraRevelada");
-const btnJogarNovamente = document.querySelector("#btnJogarNovamente")
+const btnJogarNovamente = document.querySelector("#btnJogarNovamente");
+const btnDica = document.querySelector("#btnDica");
+const textoDica = document.querySelector("#textoDica");
 
 const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -21,6 +23,7 @@ const estadoJogo = {
   maxErros: 6,
   finalizado: false,
   vitoria: false,
+  dicaUtilizada: false,
 };
 
 const palavras = [
@@ -157,21 +160,36 @@ function finalizarJogo() {
 }
 
 function reiniciarJogo() {
-    estadoJogo.palavraAtual = "";
-    estadoJogo.dicaAtual = "";
-    estadoJogo.letrasCorretas = [];
-    estadoJogo.letrasErradas = [];
-    estadoJogo.erros = 0;
-    estadoJogo.finalizado = false;
-    estadoJogo.vitoria = false;
+  estadoJogo.palavraAtual = "";
+  estadoJogo.dicaAtual = "";
+  estadoJogo.letrasCorretas = [];
+  estadoJogo.letrasErradas = [];
+  estadoJogo.erros = 0;
+  estadoJogo.finalizado = false;
+  estadoJogo.vitoria = false;
+  estadoJogo.dicaUtilizada = false;
+  modalResultado.close();
+  textoDica.textContent = "";
+  textoDica.hidden = true;
+  btnDica.disabled = false;
 
-    modalResultado.close();
+  sortearPalavra();
+  atualizarPalavra();
+  criarTeclado();
+  atualizarStatus();
+}
 
-    sortearPalavra();
-    atualizarPalavra();
-    criarTeclado();
-    atualizarStatus();
-};
+function mostrarDica() {
+  if (estadoJogo.finalizado || estadoJogo.dicaUtilizada) {
+    return;
+  }
+
+  textoDica.textContent = estadoJogo.dicaAtual;
+  textoDica.hidden = false;
+
+  estadoJogo.dicaUtilizada = true;
+  btnDica.disabled = true;
+}
 
 btnIniciar.addEventListener("click", () => {
   sortearPalavra();
@@ -186,3 +204,4 @@ btnIniciar.addEventListener("click", () => {
 });
 
 btnJogarNovamente.addEventListener("click", reiniciarJogo);
+btnDica.addEventListener("click", mostrarDica);
