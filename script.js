@@ -8,6 +8,7 @@ const contadorAcertos = document.querySelector("#contadorAcertos");
 const modalResultado = document.querySelector("#modalResultado");
 const mensagemResultado = document.querySelector("#mensagemResultado");
 const palavraRevelada = document.querySelector("#palavraRevelada");
+const btnJogarNovamente = document.querySelector("#btnJogarNovamente")
 
 const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -155,6 +156,23 @@ function finalizarJogo() {
   modalResultado.showModal();
 }
 
+function reiniciarJogo() {
+    estadoJogo.palavraAtual = "";
+    estadoJogo.dicaAtual = "";
+    estadoJogo.letrasCorretas = [];
+    estadoJogo.letrasErradas = [];
+    estadoJogo.erros = 0;
+    estadoJogo.finalizado = false;
+    estadoJogo.vitoria = false;
+
+    modalResultado.close();
+
+    sortearPalavra();
+    atualizarPalavra();
+    criarTeclado();
+    atualizarStatus();
+};
+
 btnIniciar.addEventListener("click", () => {
   sortearPalavra();
   atualizarPalavra();
@@ -166,3 +184,5 @@ btnIniciar.addEventListener("click", () => {
 
   console.log(estadoJogo);
 });
+
+btnJogarNovamente.addEventListener("click", reiniciarJogo);
