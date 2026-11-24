@@ -227,3 +227,22 @@ btnIniciar.addEventListener("click", () => {
 
 btnJogarNovamente.addEventListener("click", reiniciarJogo);
 btnDica.addEventListener("click", mostrarDica);
+
+document.addEventListener("keydown", (evento) => {
+    const letra = evento.key.toUpperCase();
+    const botoes = tecladoVirtual.querySelectorAll("button");
+
+    if(!alfabeto.includes(letra)) {
+        return;
+    }
+
+    if(areaJogo.hidden || estadoJogo.finalizado) {
+        return;
+    }
+
+    const botao = [...botoes].find(
+        (botao) => botao.textContent === letra
+    );
+
+    verificarLetra(letra, botao);
+});
