@@ -11,6 +11,9 @@ const palavraRevelada = document.querySelector("#palavraRevelada");
 const btnJogarNovamente = document.querySelector("#btnJogarNovamente");
 const btnDica = document.querySelector("#btnDica");
 const textoDica = document.querySelector("#textoDica");
+const btnComoJogar = document.querySelector("#btnComoJogar");
+const btnFecharInstrucoes = document.querySelector("#btnFecharInstrucoes");
+const modalInstrucoes = document.querySelector("#modalInstrucoes");
 
 const partesForca = [
   document.querySelector("#cabeca"),
@@ -212,22 +215,6 @@ function atualizarDesenho() {
   });
 }
 
-btnIniciar.addEventListener("click", () => {
-  sortearPalavra();
-  atualizarPalavra();
-  criarTeclado();
-  atualizarStatus();
-  atualizarDesenho();
-
-  areaJogo.hidden = false;
-  inicioJogo.hidden = true;
-
-  console.log(estadoJogo);
-});
-
-btnJogarNovamente.addEventListener("click", reiniciarJogo);
-btnDica.addEventListener("click", mostrarDica);
-
 document.addEventListener("keydown", (evento) => {
     const letra = evento.key.toUpperCase();
     const botoes = tecladoVirtual.querySelectorAll("button");
@@ -246,3 +233,30 @@ document.addEventListener("keydown", (evento) => {
 
     verificarLetra(letra, botao);
 });
+
+btnIniciar.addEventListener("click", () => {
+  sortearPalavra();
+  atualizarPalavra();
+  criarTeclado();
+  atualizarStatus();
+  atualizarDesenho();
+
+  areaJogo.hidden = false;
+  inicioJogo.hidden = true;
+
+  console.log(estadoJogo);
+});
+
+btnJogarNovamente.addEventListener("click", reiniciarJogo);
+btnDica.addEventListener("click", mostrarDica);
+
+btnComoJogar.addEventListener("click", () => {
+    modalInstrucoes.showModal();
+});
+
+btnFecharInstrucoes.addEventListener("click", () => {
+    modalInstrucoes.close();
+});
+
+
+
