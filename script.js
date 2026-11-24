@@ -1,6 +1,7 @@
 const btnIniciar = document.querySelector("#btnIniciar");
 const areaJogo = document.querySelector("#areaJogo");
 const inicioJogo = document.querySelector("#inicioJogo");
+const palavraSecreta = document.querySelector("#palavraSecreta");
 
 const estadoJogo = {
     palavraAtual: "",
@@ -45,9 +46,27 @@ function sortearPalavra() {
     estadoJogo.dicaAtual = palavraSorteada.dica;
 }
 
+function atualizarPalavra() {
+    palavraSecreta.textContent = "";
+
+    for(const letra of estadoJogo.palavraAtual) {
+        const span = document.createElement("span");
+
+        if(estadoJogo.letrasCorretas.includes(letra)) {
+            span.textContent = letra;
+        } else {
+            span.textContent = "_"
+        }
+
+        palavraSecreta.appendChild(span);
+    };
+};
+
+
 btnIniciar.addEventListener("click", () => {
     sortearPalavra();
-    
+    atualizarPalavra();
+
     areaJogo.hidden = false;
     inicioJogo.hidden = true;
 
