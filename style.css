@@ -20,3 +20,27 @@ body {
     min-height: 100vh;
 }
 
+header {
+    background-color: var(--cor-branca);
+    padding: 24px;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--cor-primaria);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+main section {
+    background-color: var(--cor-branca);
+    padding: 30px;
+    border-radius: 12px;
+}
