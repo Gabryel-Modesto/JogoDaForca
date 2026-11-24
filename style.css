@@ -19,6 +19,8 @@ body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -38,6 +40,7 @@ main {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
+  flex: 1;
 }
 
 main section {
@@ -196,7 +199,6 @@ dialog button {
   margin-top: 15px;
 }
 
-
 footer {
   background-color: var(--cor-branca);
   padding: 20px;
@@ -209,3 +211,49 @@ footer p {
   margin: 5px 0;
 }
 
+@media (max-width: 600px) {
+  header {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  main {
+    margin: 20px auto;
+    padding: 12px;
+  }
+
+  main section {
+    padding: 20px 15px;
+  }
+
+  .acoesIniciais {
+    flex-wrap: wrap;
+  }
+
+  #statusJogo {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  #palavraSecreta {
+    gap: 7px;
+    font-size: 22px;
+  }
+
+  #tecladoVirtual {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  #tecladoVirtual button {
+    padding: 10px 3px;
+    font-size: 14px;
+  }
+
+  dialog {
+    padding: 22px;
+  }
+}
